@@ -120,10 +120,14 @@ This document tracks the implementation progress of the Warsha car maintenance b
 
 ---
 
-## 🚗 Booking Feature (PLANNED)
-- [ ] Domain Layer (BookingRequestEntity, TimeSlotEntity, CreateBookingUsecase)
-- [ ] Data Layer (BookingRequestModel, BookingDataSource, BookingRepositoryImpl)
-- [ ] Presentation Layer (BookingBloc, SelectWorkshopScreen, SelectDateTimeScreen, ConfirmBookingScreen)
+## 🚗 Booking & Live Status Feature (COMPLETED) ✅
+- [x] MyBookingsScreen - Active, Upcoming, and Past tabs layouts displaying current workshop statuses.
+- [x] LiveProgressCard - Dark-themed card showing real-time service stepper, car details, quote approval actions, and chat/call indicators.
+- [x] BookingStatusCard - Parameterized custom card supporting badge states (Confirmed, Awaiting), workshop info, scheduling text, clock banners, and action triggers.
+- [x] BookingConfirmedScreen - Confirmed checkout screen displaying booking summary ID, schedule details, support links, calendar integration CTAs.
+- [x] BookServiceScreen - Shell showing list of available services (oil change, brake pads, etc.) for booking.
+- [x] ApproveQuoteScreen - Quote modification screen with pending badge card, original item breakdown, mechanic recommendation extras, and new total gradient.
+- [x] Integrated navigation routing directly into the 3rd tab of the BottomNavigationBar.
 
 ---
 
@@ -132,10 +136,25 @@ This document tracks the implementation progress of the Warsha car maintenance b
 - [x] MyCarsScreen - Sub-page listing active user vehicles with black/orange monitoring panel.
 - [x] Implemented responsive user profile hierarchies, custom orange-bordered profile cards, and settings menu selections.
 - [x] Implemented MyCarsScreen dynamic list items, custom layout cards, and persistent black/orange vehicle monitor panels.
-- [x] PaymentMethodsScreen - Sub-page displaying orange-bordered payment options cards (Credit/Debit, Cash, Fawry/Wallet/Instapay) with mint-green icons.
+- [x] PaymentMethodsScreen - Sub-page displaying Amount Due banner, Choose payment method subtitle, and list of payment option tiles (Credit Card, Instapay, Fawry, Wallet, Cash).
+- [x] WaitingPaymentScreen - Frame 586 live waiting & verification screen displaying centered checkmarked phone status icon, live countdown timer from 02:19, and bottom Refresh / Cancel control buttons.
+- [x] PaymentMethodTile - Option tile component with orange tinted fill, light orange outline, payment asset image highlights, and trailing chevron icons.
+- [x] PayWithCardBottomSheet - Stateful modal card checkout with 15% orange-shaded gradient top, Visa asset inside Card Number input, MM/YY/CVV inputs, custom orange checkbox state tracker, dynamic pricing Pay CTA, and lock indicators.
+- [x] PayWithInstapayBottomSheet - Dark-themed modal checkout featuring Instapay details, centered amount due banner, 3 copyable full-width transfer text fields (Number, Address, Bank details) with Clipboard integration, and direct orange CTA launch button.
+- [x] FawryPaymentBottomSheet - Dark-themed modal checkout displaying a copyable/shareable 8-digit reference code box, a 4-step instruction list with orange circle leading numbers, and a default disabled "I've paid - check status" footer button.
+- [x] PayWithWalletsBottomSheet - Dark-themed modal checkout displaying a list of 4 select-active cash wallet rows (Vodafone, Etisalat, Orange, WE Pay) with brand logos, an outlined Phone Number field with a contacts prefix icon, and an orange Continue button.
 - [x] EditProfileScreen - Sub-page displaying rounded input fields, standalone Language card, red Delete Account trigger button, and absolute bottom brand logo.
 - [x] HelpSupportScreen - Sub-page featuring custom search bar, quick support cards (Chat with us, Email Support), integrated FAQ expansion list, and a bottom contact team text footer.
 - [x] Refactored all profile sub-pages (EditProfileScreen, HelpSupportScreen, PaymentMethodsScreen) into modular presentation widgets, reducing all shell screen files strictly below 150 lines.
+
+---
+
+## ⏰ Reminders Feature (COMPLETED) ✅
+- [x] RemindersScreen - Main view with notification icon, title, subtitle, and horizontal filter capsule tabs.
+- [x] Custom Filter Tabs Component - Supports active styles for Upcoming (dark bg), Urgent (orange outline), and Completed (grey).
+- [x] Custom Timeline Component - Left graphic vertical lines and dot timeline indicators, right premium orange-bordered cards with top badge and Book Service buttons.
+- [x] Urgent Timeline Item Component - Renders double outer/inner circles for urgent warnings, dynamic custom dotted line painter, Red "Overdue by 5 days" badge, and price estimates.
+- [x] Integrated navigation directly into the 4th tab of the BottomNavigationBar.
 
 ---
 

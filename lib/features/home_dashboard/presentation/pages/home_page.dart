@@ -7,6 +7,8 @@ import 'package:warsha_app/features/home_dashboard/presentation/pages/workshops_
 import 'package:warsha_app/features/home_dashboard/presentation/cubit/workshops_filter_cubit.dart';
 import 'package:warsha_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:warsha_app/features/history/presentation/pages/car_history_screen.dart';
+import 'package:warsha_app/features/reminders/presentation/pages/reminders_screen.dart';
+import 'package:warsha_app/features/bookings/presentation/pages/my_bookings_screen.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/welcome_header_widget.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/live_car_status_card.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/custom_search_bar.dart';
@@ -49,9 +51,13 @@ class _HomePageState extends State<HomePage> {
           : AppColors.lightBg,
       body: _currentIndex == 1
           ? const CarHistoryScreen()
-          : _currentIndex == 4
-              ? const ProfileScreen()
-              : SafeArea(
+          : _currentIndex == 2
+              ? const MyBookingsScreen()
+              : _currentIndex == 3
+                  ? const RemindersScreen()
+                  : _currentIndex == 4
+                      ? const ProfileScreen()
+                      : SafeArea(
                   child: SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Padding(
