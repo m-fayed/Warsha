@@ -49,9 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfileScreen(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const EditProfileScreen()),
                   );
                 },
               ),
@@ -74,9 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const MyCarsScreen(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const MyCarsScreen()),
                   );
                 },
               ),
@@ -87,9 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const PaymentMethodsScreen(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const PaymentMethodsScreen()),
                   );
                 },
               ),
@@ -120,18 +114,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       'English',
-                      style: TextStyle(
-                        color: AppColors.textGrey,
-                        fontSize: 14,
-                        fontFamily: 'Roboto',
-                      ),
+                      style: TextStyle(color: AppColors.textGrey, fontSize: 14, fontFamily: 'Roboto'),
                     ),
                     SizedBox(width: 4),
-                    Icon(
-                      Icons.chevron_right,
-                      color: AppColors.textGrey,
-                      size: 20,
-                    ),
+                    Icon(Icons.chevron_right, color: AppColors.textGrey, size: 20),
                   ],
                 ),
                 onTap: () {},
@@ -148,16 +134,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     });
                   },
                   activeColor: AppColors.primaryOrange,
-                  activeTrackColor: AppColors.primaryOrangeLight.withOpacity(
-                    0.5,
-                  ),
+                  activeTrackColor: AppColors.primaryOrangeLight.withOpacity(0.5),
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const NotificationsScreen(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const NotificationsScreen()),
                   );
                 },
               ),
@@ -168,9 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const HelpSupportScreen(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const HelpSupportScreen()),
                   );
                 },
               ),
@@ -194,11 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 100,
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) {
-                    return const Icon(
-                      Icons.car_repair,
-                      size: 80,
-                      color: AppColors.primaryOrange,
-                    );
+                    return const Icon(Icons.car_repair, size: 80, color: AppColors.primaryOrange);
                   },
                 ),
               ),

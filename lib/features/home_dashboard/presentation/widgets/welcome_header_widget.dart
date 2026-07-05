@@ -13,6 +13,7 @@ class WelcomeHeaderWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        // الجزء الشمال: فيه اسم التطبيق والترحيب تحت بعض
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -37,6 +38,7 @@ class WelcomeHeaderWidget extends StatelessWidget {
           ],
         ),
         
+        // الجزء اليمين: زرار الجرس الذكي الموحد بالكونتر بتاعه
         const NotificationBellWithBadge(),
       ],
     );

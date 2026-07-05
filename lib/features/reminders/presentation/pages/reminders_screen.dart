@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
-import 'package:warsha_app/features/profile/presentation/pages/notifications_screen.dart';
+import 'package:warsha_app/features/profile/presentation/widgets/notification_bell_with_badge.dart';
 import '../widgets/reminder_timeline_item.dart';
 import '../widgets/urgent_reminder_timeline_item.dart';
 import '../widgets/reminder_filter_tabs.dart';
@@ -25,7 +25,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Top Header with Title and Notification Icon
+              // 1. Top Header with Title and Custom Reusable Notification Bell
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,21 +38,9 @@ class _RemindersScreenState extends State<RemindersScreen> {
                       fontFamily: 'Roboto',
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.notifications_none_outlined,
-                      color: AppColors.textDark,
-                      size: 26,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const NotificationsScreen(),
-                        ),
-                      );
-                    },
-                  ),
+                  
+                  // رشقنا الجرس الموحد والذكي بالـ Badge بتاعه هنا
+                  const NotificationBellWithBadge(),
                 ],
               ),
               const SizedBox(height: 4),
