@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
-<<<<<<< HEAD
 import 'package:warsha_app/features/profile/presentation/widgets/notification_bell_with_badge.dart';
-=======
->>>>>>> 373759f29ee59289957762fbdbc8b221321575a9
 import '../widgets/active_bookings_tab_view.dart';
 
 class MyBookingsScreen extends StatefulWidget {
@@ -39,18 +36,8 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
                       fontFamily: 'Roboto',
                     ),
                   ),
-<<<<<<< HEAD
+
                   const NotificationBellWithBadge(),
-=======
-                  IconButton(
-                    icon: const Icon(
-                      Icons.notifications_none_outlined,
-                      color: AppColors.textDark,
-                      size: 26,
-                    ),
-                    onPressed: () {},
-                  ),
->>>>>>> 373759f29ee59289957762fbdbc8b221321575a9
                 ],
               ),
               const SizedBox(height: 20),
