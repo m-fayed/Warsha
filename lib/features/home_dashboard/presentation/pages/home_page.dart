@@ -20,7 +20,8 @@ import 'package:warsha_app/features/home_dashboard/presentation/widgets/main_bot
 
 /// HomePage dashboard screen built according to strict UI & UX specifications.
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int initialTab;
+  const HomePage({super.key, this.initialTab = 0});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -32,11 +33,12 @@ class _HomePageState extends State<HomePage> {
   bool _isBmwClubFavorite = false;
 
   // Selected bottom navigation index
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialTab;
     context.read<HomeBloc>().add(const LoadFeaturedWorkshopsEvent());
   }
 

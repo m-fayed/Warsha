@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/pages/home_page.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/bottom_branding_logo.dart';
+import 'package:warsha_app/features/bookings/presentation/pages/payment_success_screen.dart';
+import 'package:warsha_app/features/bookings/presentation/pages/payment_failed_screen.dart';
 
 class WaitingPaymentScreen extends StatefulWidget {
   const WaitingPaymentScreen({super.key});
@@ -29,10 +31,14 @@ class _WaitingPaymentScreenState extends State<WaitingPaymentScreen> {
           _secondsRemaining--;
         });
       } else {
-        setState(() {
-          _isExpired = true;
-        });
         _timer?.cancel();
+        // Route to PaymentFailedScreen when the count finishes (Temporary Testing Override)
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PaymentFailedScreen(),
+          ),
+        );
       }
     });
   }
@@ -230,12 +236,12 @@ class _WaitingPaymentScreenState extends State<WaitingPaymentScreen> {
                                 backgroundColor: Colors.green,
                               ),
                             );
-                            // Route back to main home page
-                            Navigator.of(context).pushAndRemoveUntil(
+                            // Smoothly replace with PaymentSuccessScreen
+                            Navigator.pushReplacement(
+                              context,
                               MaterialPageRoute(
-                                builder: (context) => const HomePage(),
+                                builder: (context) => const PaymentSuccessScreen(),
                               ),
-                              (route) => false,
                             );
                           },
                           child: Container(

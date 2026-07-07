@@ -127,6 +127,8 @@ This document tracks the implementation progress of the Warsha car maintenance b
 - [x] BookingConfirmedScreen - Confirmed checkout screen displaying booking summary ID, schedule details, support links, calendar integration CTAs.
 - [x] BookServiceScreen - Shell showing list of available services (oil change, brake pads, etc.) for booking.
 - [x] ApproveQuoteScreen - Quote modification screen with pending badge card, original item breakdown, mechanic recommendation extras, and new total gradient.
+- [x] PaymentSuccessScreen - Payment success checkout confirmation page displaying a custom `< Back` button, a checkmark icon with scattering confetti dots, an orange-tinted/bordered booking summary detail card (Service, Car, Workshop, Date, Time, Amount Paid), and bottom actions (`View Booking`, `Back to Home`).
+- [x] PaymentFailedScreen - Payment failure checkout error page displaying a custom `< Back` button, a checkmark-false icon, an orange-tinted/bordered booking details card (Reason, Amount, Reference ID) separated by dashed divider rows, and bottom actions (`Try Again`, `Change payment method`).
 - [x] Integrated navigation routing directly into the 3rd tab of the BottomNavigationBar.
 
 ---
