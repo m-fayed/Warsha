@@ -21,11 +21,12 @@ class ServiceItemCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFFA8A8A8), // Figma Hex #A8A8A8 Grey background
+          color: const Color(0x1FFF7905), // Figma Hex #FF79051F
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: const Color(0xFFFF7905), width: 1.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

@@ -46,20 +46,9 @@ class GridServicesSection extends StatelessWidget {
               vertical: 12.0,
               horizontal: 4.0,
             ),
-            decoration: BoxDecoration(
-              color: isEmergency
-                  ? const Color(
-                      0xFFFFEBEE,
-                    ) // Subtle emergency red tint background
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isEmergency
-                    ? Colors.red.withValues(alpha: 0.5)
-                    : Colors.grey.withValues(alpha: 0.3),
-                width: 1.0,
-              ),
-            ),
+            decoration: isEmergency
+                ? AppColors.redWhiteGradient
+                : AppColors.orangeWhiteGradient,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -71,7 +60,7 @@ class GridServicesSection extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Icon(
                       isEmergency ? Icons.warning_amber_rounded : Icons.build,
-                      color: isEmergency ? Colors.red : Colors.grey,
+                      color: isEmergency ? Colors.red[900] : AppColors.textDark,
                       size: 24,
                     );
                   },

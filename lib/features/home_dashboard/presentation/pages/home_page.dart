@@ -12,7 +12,6 @@ import 'package:warsha_app/features/bookings/presentation/pages/my_bookings_scre
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/welcome_header_widget.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/live_car_status_card.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/custom_search_bar.dart';
-import 'package:warsha_app/features/home_dashboard/presentation/widgets/filter_navigation_tabs.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/quick_actions_section.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/recommended_section.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/widgets/grid_services_section.dart';
@@ -54,91 +53,85 @@ class _HomePageState extends State<HomePage> {
       body: _currentIndex == 1
           ? const CarHistoryScreen()
           : _currentIndex == 2
-              ? const MyBookingsScreen()
-              : _currentIndex == 3
-                  ? const RemindersScreen()
-                  : _currentIndex == 4
-                      ? const ProfileScreen()
-                      : SafeArea(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 12.0,
+          ? const MyBookingsScreen()
+          : _currentIndex == 3
+          ? const RemindersScreen()
+          : _currentIndex == 4
+          ? const ProfileScreen()
+          : SafeArea(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 12.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const WelcomeHeaderWidget(),
+                      const SizedBox(height: 24),
+                      const LiveCarStatusCard(),
+                      const SizedBox(height: 20),
+                      CustomSearchBar(
+                        onSubmitted: (query) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  WorkshopsScreen(initialSearchQuery: query),
+                            ),
+                          );
+                        },
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const WelcomeHeaderWidget(),
-                          const SizedBox(height: 24),
-                          const LiveCarStatusCard(),
-                          const SizedBox(height: 20),
-                          CustomSearchBar(
-                            onSubmitted: (query) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => WorkshopsScreen(initialSearchQuery: query),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 16),
-                          FilterNavigationTabs(
-                            onFilterSelected: (filter) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => WorkshopsScreen(initialFilter: filter),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 24),
-                          QuickActionsSection(
-                            onViewAll: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const WorkshopsScreen(initialFilter: WorkshopFilter.nearMe),
-                                ),
-                              );
-                            },
-                            isSmallScreen: isSmallScreen,
-                          ),
-                          const SizedBox(height: 24),
-                          RecommendedSection(
-                            screenWidth: screenWidth,
-                            isBmwStationFavorite: _isBmwStationFavorite,
-                            isBmwClubFavorite: _isBmwClubFavorite,
-                            onBmwStationFavoriteTap: () {
-                              setState(() {
-                                _isBmwStationFavorite = !_isBmwStationFavorite;
-                              });
-                            },
-                            onBmwClubFavoriteTap: () {
-                              setState(() {
-                                _isBmwClubFavorite = !_isBmwClubFavorite;
-                              });
-                            },
-                            onViewAll: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const WorkshopsScreen(initialFilter: WorkshopFilter.topRated),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(height: 24),
-                          GridServicesSection(isSmallScreen: isSmallScreen),
-                          const SizedBox(height: 24),
-                        ],
+                      const SizedBox(height: 24),
+                      QuickActionsSection(
+                        onViewAll: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const WorkshopsScreen(
+                                initialFilter: WorkshopFilter.nearMe,
+                              ),
+                            ),
+                          );
+                        },
+                        isSmallScreen: isSmallScreen,
                       ),
-                    ),
+                      const SizedBox(height: 24),
+                      RecommendedSection(
+                        screenWidth: screenWidth,
+                        isBmwStationFavorite: _isBmwStationFavorite,
+                        isBmwClubFavorite: _isBmwClubFavorite,
+                        onBmwStationFavoriteTap: () {
+                          setState(() {
+                            _isBmwStationFavorite = !_isBmwStationFavorite;
+                          });
+                        },
+                        onBmwClubFavoriteTap: () {
+                          setState(() {
+                            _isBmwClubFavorite = !_isBmwClubFavorite;
+                          });
+                        },
+                        onViewAll: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const WorkshopsScreen(
+                                initialFilter: WorkshopFilter.topRated,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                      GridServicesSection(isSmallScreen: isSmallScreen),
+                      const SizedBox(height: 24),
+                    ],
                   ),
                 ),
+              ),
+            ),
       bottomNavigationBar: MainBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {

@@ -10,16 +10,19 @@ class LiveCarStatusCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E), // Dark theme container (#1E1E1E)
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color(
+              0xFFE6E6E6,
+            ), // Blended bottom color (#FFFFFF + 20% dark overlay)
+            Color(0xFFCC6104), // Blended top color (#FF7905 + 20% dark overlay)
+          ],
+          stops: [0.25, 1.0],
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,15 +35,15 @@ class LiveCarStatusCard extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1.2,
                 child: Container(
-                  color: const Color(0xFF292929),
+                  color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/BmwClub.png',
+                    'assets/images/car.png',
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) {
                       return const Center(
                         child: Icon(
                           Icons.directions_car,
-                          color: Colors.white54,
+                          color: AppColors.textGrey,
                           size: 40,
                         ),
                       );
@@ -61,7 +64,7 @@ class LiveCarStatusCard extends StatelessWidget {
                 const Text(
                   'Live car status',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textDark,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Roboto',
@@ -73,7 +76,7 @@ class LiveCarStatusCard extends StatelessWidget {
                   height: 6,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.15),
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(3),
                   ),
                   child: Align(
@@ -98,7 +101,7 @@ class LiveCarStatusCard extends StatelessWidget {
                 const Text(
                   'Car range: 137,000km',
                   style: TextStyle(
-                    color: Color(0xFFB0B0B0),
+                    color: AppColors.textGrey,
                     fontSize: 12,
                     fontFamily: 'Roboto',
                   ),
@@ -107,7 +110,7 @@ class LiveCarStatusCard extends StatelessWidget {
                 const Text(
                   'Car health status: Good',
                   style: TextStyle(
-                    color: Color(0xFFB0B0B0),
+                    color: AppColors.textGrey,
                     fontSize: 12,
                     fontFamily: 'Roboto',
                   ),
@@ -116,7 +119,7 @@ class LiveCarStatusCard extends StatelessWidget {
                 const Text(
                   'Next service: Oil change in 3,000km',
                   style: TextStyle(
-                    color: Color(0xFFB0B0B0),
+                    color: AppColors.textGrey,
                     fontSize: 11,
                     fontFamily: 'Roboto',
                   ),

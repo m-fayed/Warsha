@@ -18,42 +18,27 @@ class HistoryTripleStatCards extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildStatCard(
-            label: 'Total service',
-            value: totalServices,
-          ),
+          child: _buildStatCard(label: 'Total service', value: totalServices),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildStatCard(
-            label: 'Total Spent',
-            value: totalSpent,
-          ),
+          child: _buildStatCard(label: 'Total Spent', value: totalSpent),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildStatCard(
-            label: 'Since',
-            value: sinceYear,
-          ),
+          child: _buildStatCard(label: 'Since', value: sinceYear),
         ),
       ],
     );
   }
 
-  Widget _buildStatCard({
-    required String label,
-    required String value,
-  }) {
+  Widget _buildStatCard({required String label, required String value}) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: AppColors.border,
-          width: 1,
-        ),
+        border: Border.all(color: const Color(0xFF000000), width: 1.0),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -62,7 +47,7 @@ class HistoryTripleStatCards extends StatelessWidget {
             label,
             style: const TextStyle(
               color: AppColors.textGrey,
-              fontSize: 12,
+              fontSize: 15,
               fontFamily: 'Roboto',
             ),
             textAlign: TextAlign.center,

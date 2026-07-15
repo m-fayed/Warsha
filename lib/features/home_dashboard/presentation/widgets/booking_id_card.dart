@@ -16,18 +16,15 @@ class BookingIdCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         borderRadius: BorderRadius.circular(16),
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF2A1F22),
-            Color(0xFF1A1416),
-          ],
-        ),
+        border: Border.all(
+          color: const Color(0xFFFF7905),
+          width: 1.0,
+        ), // Orange border
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -62,7 +59,7 @@ class BookingIdCard extends StatelessWidget {
                 Text(
                   dateTimeText,
                   style: const TextStyle(
-                    color: Colors.white70,
+                    color: AppColors.textGrey, // Dark text color for contrast
                     fontSize: 13,
                     fontFamily: 'Roboto',
                   ),
@@ -70,17 +67,17 @@ class BookingIdCard extends StatelessWidget {
               ],
             ),
           ),
-          // Green Confirmed badge
+          // Confirmed badge
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: const Color(0xFFE8F5E9), // Light green background
+              color: const Color(0xFF00B55B), // Figma Green
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
               'Confirmed',
               style: TextStyle(
-                color: Color(0xFF2E7D32), // Dark green text
+                color: Colors.white, // Solid white text
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto',

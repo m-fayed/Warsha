@@ -22,18 +22,12 @@ class BookedCarAndServiceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         borderRadius: BorderRadius.circular(16),
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF2A1F22),
-            Color(0xFF1A1416),
-          ],
-        ),
+        border: Border.all(color: const Color(0xFFFF7905), width: 1.0), // Orange border
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -50,7 +44,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
                 width: 60,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Image.asset(
@@ -59,7 +53,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(
                       Icons.directions_car,
-                      color: Colors.white70,
+                      color: Color(0xFFFF7905),
                       size: 24,
                     );
                   },
@@ -74,7 +68,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
                     Text(
                       '$carBrand ($carSpecs)',
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: Color(0xFF1A1A1A),
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Roboto',
@@ -88,13 +82,13 @@ class BookedCarAndServiceCard extends StatelessWidget {
                         vertical: 3,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.1),
+                        color: Colors.black.withValues(alpha: 0.05),
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         carColorTag,
                         style: const TextStyle(
-                          color: Colors.white70,
+                          color: Colors.black54,
                           fontSize: 11,
                           fontFamily: 'Roboto',
                         ),
@@ -108,7 +102,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0),
             child: Divider(
-              color: Colors.white10,
+              color: Colors.black12,
               height: 1,
             ),
           ),
@@ -122,7 +116,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
                   const Text(
                     'Service details',
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.black54,
                       fontSize: 12,
                       fontFamily: 'Roboto',
                     ),
@@ -131,7 +125,7 @@ class BookedCarAndServiceCard extends StatelessWidget {
                   Text(
                     serviceDescription,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFF1A1A1A),
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',

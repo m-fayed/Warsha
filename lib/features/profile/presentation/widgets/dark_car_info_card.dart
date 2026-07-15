@@ -18,8 +18,9 @@ class DarkCarInfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E),
+        color: const Color(0x1FFF7905),
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFFF7905), width: 1.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +28,7 @@ class DarkCarInfoCard extends StatelessWidget {
           const Text(
             'Car',
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFF1A1A1A),
               fontSize: 17,
               fontWeight: FontWeight.bold,
               fontFamily: 'Roboto',
@@ -43,7 +44,7 @@ class DarkCarInfoCard extends StatelessWidget {
                   child: Image.asset(
                     imagePath,
                     fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.directions_car, size: 40, color: Colors.white),
+                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.directions_car, size: 40, color: Color(0xFFFF7905)),
                   ),
                 ),
               ),
@@ -53,11 +54,11 @@ class DarkCarInfoCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(brand, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto')),
+                    Text(brand, style: const TextStyle(color: Color(0xFF1A1A1A), fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Roboto')),
                     const SizedBox(height: 6),
-                    Text(specs, style: const TextStyle(color: Colors.white70, fontSize: 16, fontFamily: 'Roboto')),
+                    Text(specs, style: const TextStyle(color: Colors.black87, fontSize: 16, fontFamily: 'Roboto')),
                     const SizedBox(height: 6),
-                    Text(license, style: const TextStyle(color: Colors.white70, fontSize: 16, fontFamily: 'Roboto')),
+                    Text(license, style: const TextStyle(color: Colors.black87, fontSize: 16, fontFamily: 'Roboto')),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:warsha_app/core/theme/app_colors.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/pages/workshop_details_screen.dart';
 
 /// Reusable Workshop List Item Card matching design specifications
@@ -41,7 +42,7 @@ class WorkshopListItemCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color(0xFF1E1E1E), // Dark container row (#1E1E1E)
+          gradient: AppColors.popupsGradient,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -91,7 +92,7 @@ class WorkshopListItemCard extends StatelessWidget {
                   Text(
                     name,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textDark,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Roboto',
@@ -103,8 +104,8 @@ class WorkshopListItemCard extends StatelessWidget {
                   // Specialty description text
                   Text(
                     specialty,
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.6),
+                    style: const TextStyle(
+                      color: AppColors.textGrey,
                       fontSize: 12,
                       fontFamily: 'Roboto',
                     ),
@@ -136,7 +137,7 @@ class WorkshopListItemCard extends StatelessWidget {
                       Text(
                         rating.toStringAsFixed(1),
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.textDark,
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Roboto',

@@ -18,18 +18,12 @@ class BookingScheduleDetailsCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         borderRadius: BorderRadius.circular(16),
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xFF2A1F22),
-            Color(0xFF1A1416),
-          ],
-        ),
+        border: Border.all(color: const Color(0xFFFF7905), width: 1.0), // Orange border
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -45,7 +39,7 @@ class BookingScheduleDetailsCard extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0),
-            child: Divider(color: Colors.white10, height: 1),
+            child: Divider(color: Colors.black12, height: 1),
           ),
           _buildDetailRow(
             icon: Icons.access_time_outlined,
@@ -54,7 +48,7 @@ class BookingScheduleDetailsCard extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0),
-            child: Divider(color: Colors.white10, height: 1),
+            child: Divider(color: Colors.black12, height: 1),
           ),
           _buildDetailRow(
             icon: Icons.location_on_outlined,
@@ -95,7 +89,7 @@ class BookingScheduleDetailsCard extends StatelessWidget {
               Text(
                 label,
                 style: const TextStyle(
-                  color: Colors.grey,
+                  color: Colors.black54,
                   fontSize: 12,
                   fontFamily: 'Roboto',
                 ),
@@ -104,7 +98,7 @@ class BookingScheduleDetailsCard extends StatelessWidget {
               Text(
                 value,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color(0xFF1A1A1A),
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Roboto',

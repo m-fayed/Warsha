@@ -5,45 +5,32 @@ import 'package:warsha_app/core/theme/app_colors.dart';
 class CustomSearchBar extends StatelessWidget {
   final ValueChanged<String>? onSubmitted;
 
-  const CustomSearchBar({
-    super.key,
-    this.onSubmitted,
-  });
+  const CustomSearchBar({super.key, this.onSubmitted});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? AppColors.darkBgSecondary
-            : const Color(0xFFF1F1F1),
-        borderRadius: BorderRadius.circular(30),
-      ),
+      decoration: AppColors.orangeWhiteGradient,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          Icon(Icons.search, color: Colors.grey[600]),
+          const Icon(Icons.search, color: Colors.white),
           const SizedBox(width: 8),
           Expanded(
             child: TextField(
-              style: TextStyle(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : AppColors.textDark,
-                fontFamily: 'Roboto',
-              ),
+              style: const TextStyle(color: Colors.white, fontFamily: 'Roboto'),
               onSubmitted: onSubmitted,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Search Workshop or Service',
                 hintStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
+                  color: Colors.white,
+                  fontSize: 20,
                   fontFamily: 'Roboto',
                 ),
                 border: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(vertical: 12),
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 filled: false,
               ),
             ),

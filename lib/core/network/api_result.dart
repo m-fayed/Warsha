@@ -47,11 +47,7 @@ class ApiFailure<T> extends ApiResult<T> {
   final int? statusCode;
   final DioException? exception;
 
-  const ApiFailure({
-    required this.message,
-    this.statusCode,
-    this.exception,
-  });
+  const ApiFailure({required this.message, this.statusCode, this.exception});
 
   /// Factory to create failure from DioException
   factory ApiFailure.fromDioException(DioException e) {
@@ -65,7 +61,8 @@ class ApiFailure<T> extends ApiResult<T> {
         message = 'Connection timeout. Please check your internet connection.';
         break;
       case DioExceptionType.badResponse:
-        message = e.response?.data['message'] ??
+        message =
+            e.response?.data['message'] ??
             'An error occurred: ${e.response?.statusCode}';
         statusCode = e.response?.statusCode;
         break;
@@ -79,15 +76,10 @@ class ApiFailure<T> extends ApiResult<T> {
         message = 'Certificate error occurred.';
         break;
       case DioExceptionType.connectionError:
-        message =
-            'Connection error. Please check your internet connection.';
+        message = 'Connection error. Please check your internet connection.';
         break;
     }
 
-    return ApiFailure(
-      message: message,
-      statusCode: statusCode,
-      exception: e,
-    );
+    return ApiFailure(message: message, statusCode: statusCode, exception: e);
   }
 }

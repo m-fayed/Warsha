@@ -19,8 +19,9 @@ class HistoryServiceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFA8A8A8), // Figma Hex #A8A8A8
+        color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFFF7905), width: 1.0),
       ),
       child: Row(
         children: [

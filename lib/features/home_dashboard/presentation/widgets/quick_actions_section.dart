@@ -52,52 +52,50 @@ class QuickActionsSection extends StatelessWidget {
         const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: actions.map((act) {
-            return Expanded(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 14.0,
-                  horizontal: 4.0,
+      children: actions.map((act) {
+        return Expanded(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 14.0,
+              horizontal: 4.0,
+            ),
+            decoration: AppColors.orangeWhiteGradient,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  act['icon']!,
+                  height: 28,
+                  width: 28,
+                  fit: BoxFit.contain,
+                  color: Colors.black,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.build_circle,
+                      color: Colors.black,
+                      size: 28,
+                    );
+                  },
                 ),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF1E1E1E), // Dark rounded cards
-                  borderRadius: BorderRadius.circular(12),
+                const SizedBox(height: 8),
+                Text(
+                  act['title']!,
+                  style: TextStyle(
+                    color: AppColors.textDark,
+                    fontSize: isSmallScreen ? 9 : 11,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Roboto',
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      act['icon']!,
-                      height: 28,
-                      width: 28,
-                      fit: BoxFit.contain,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Icon(
-                          Icons.build_circle,
-                          color: Colors.white,
-                          size: 28,
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      act['title']!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: isSmallScreen ? 9 : 11,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Roboto',
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }).toList(),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
         ),
       ],
     );

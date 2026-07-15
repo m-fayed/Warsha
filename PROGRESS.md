@@ -117,6 +117,7 @@ This document tracks the implementation progress of the Warsha car maintenance b
 - [x] Refactored CarHistoryScreen into modular presentation widgets, reducing the parent shell screen file strictly below 150 lines.
 - [x] Refactored BookServiceScreen into modular presentation widgets, reducing the parent shell screen file strictly below 130 lines.
 - [x] Implemented BookingConfirmedScreen along with its modular sub-widgets (BookingSuccessHeader, BookingIdCard, BookedCarAndServiceCard, BookingScheduleDetailsCard, RescheduleNoticeTile) keeping code strictly below 150 lines.
+- [x] Updated card backgrounds in Home, Workshops, Near, and Offers screens with the designer's "popups" Linear Gradient design.
 
 ---
 

@@ -4,7 +4,8 @@ import '../pages/approve_quote_screen.dart';
 
 class LiveProgressCard extends StatelessWidget {
   final String carInfo;
-  final int currentStep; // 0: Diagnosing, 1: InProgress, 2: QuickCheck, 3: Ready
+  final int
+  currentStep; // 0: Diagnosing, 1: InProgress, 2: QuickCheck, 3: Ready
   final VoidCallback onApproveQuote;
   final VoidCallback onChatTap;
   final VoidCallback onCallTap;
@@ -23,11 +24,15 @@ class LiveProgressCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E), // Premium dark background
+        color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         borderRadius: BorderRadius.circular(18),
+        border: Border.all(
+          color: const Color(0xFFFF7905),
+          width: 1.0,
+        ), // Orange border
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -43,14 +48,17 @@ class LiveProgressCard extends StatelessWidget {
               const Text(
                 'In Progress',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color(0xFF1A1A1A),
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Roboto',
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFFF7905).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
@@ -63,11 +71,7 @@ class LiveProgressCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // Dot indicator
-                    Icon(
-                      Icons.circle,
-                      size: 6,
-                      color: Color(0xFFFF7905),
-                    ),
+                    Icon(Icons.circle, size: 6, color: Color(0xFFFF7905)),
                     SizedBox(width: 5),
                     Text(
                       'Live now',
@@ -87,7 +91,7 @@ class LiveProgressCard extends StatelessWidget {
           const Text(
             'Oil Change',
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xFF1A1A1A),
               fontSize: 18,
               fontWeight: FontWeight.bold,
               fontFamily: 'Roboto',
@@ -97,7 +101,7 @@ class LiveProgressCard extends StatelessWidget {
           const Text(
             'At Bmw Station . Started 10:24 Am',
             style: TextStyle(
-              color: Colors.white60,
+              color: Colors.black54,
               fontSize: 13,
               fontFamily: 'Roboto',
             ),
@@ -108,8 +112,12 @@ class LiveProgressCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
             decoration: BoxDecoration(
-              color: const Color(0xFFFF7905).withValues(alpha: 0.08),
+              color: const Color(0x1FFF7905), // Figma Hex #FF79051F
               borderRadius: BorderRadius.circular(14),
+              border: Border.all(
+                color: const Color(0xFFFF7905),
+                width: 1.0,
+              ), // Orange border
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +125,7 @@ class LiveProgressCard extends StatelessWidget {
                 Text(
                   carInfo,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Color(0xFF1A1A1A),
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Roboto',
@@ -207,17 +215,17 @@ class LiveProgressCard extends StatelessWidget {
             shape: BoxShape.circle,
             color: isCompleted || isActive
                 ? const Color(0xFFFF7905)
-                : Colors.grey.shade700,
-            border: isActive
-                ? Border.all(color: Colors.white, width: 2)
-                : null,
+                : Colors.grey.shade300,
+            border: isActive ? Border.all(color: Colors.white, width: 2) : null,
           ),
         ),
         const SizedBox(height: 6),
         Text(
           label,
           style: TextStyle(
-            color: isCompleted || isActive ? Colors.white : Colors.grey.shade500,
+            color: isCompleted || isActive
+                ? const Color(0xFF1A1A1A)
+                : Colors.black54,
             fontSize: 9,
             fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
             fontFamily: 'Roboto',
@@ -231,10 +239,12 @@ class LiveProgressCard extends StatelessWidget {
     final bool isPassed = leftStepIndex < currentStep;
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 14.0), // Align line with the dots
+        padding: const EdgeInsets.only(
+          bottom: 14.0,
+        ), // Align line with the dots
         child: Container(
           height: 2,
-          color: isPassed ? const Color(0xFFFF7905) : Colors.grey.shade700,
+          color: isPassed ? const Color(0xFFFF7905) : Colors.black12,
         ),
       ),
     );
@@ -251,17 +261,10 @@ class LiveProgressCard extends StatelessWidget {
         height: 48,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Colors.grey.shade800,
-            width: 1.2,
-          ),
-          color: Colors.white.withValues(alpha: 0.05),
+          border: Border.all(color: const Color(0xFFFF7905), width: 1.0),
+          color: const Color(0x1FFF7905), // Figma Hex #FF79051F
         ),
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: 20,
-        ),
+        child: Icon(icon, color: const Color(0xFF1A1A1A), size: 20),
       ),
     );
   }

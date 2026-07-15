@@ -43,4 +43,57 @@ abstract class AppColors {
 
   // Transparent
   static const Color transparent = Color(0x00000000);
+
+  // Reusable popups gradient from Figma
+  static const LinearGradient popupsGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      Color(0xFFE6E6E6), // Blended bottom color (#FFFFFF + 20% dark overlay)
+      Color(0xFFCC6104), // Blended top color (#FF7905 + 20% dark overlay)
+    ],
+    stops: [0.25, 1.0], // Exactly represents the 25.48% Figma boundary
+  );
+
+  static const BoxDecoration orangeWhiteGradient = BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(16)),
+    gradient: LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+      colors: [
+        Color(0xFFE6E6E6), // Blended bottom color (#FFFFFF + 20% dark overlay)
+        Color(0xFFCC6104), // Blended top color (#FF7905 + 20% dark overlay)
+      ],
+      stops: [0.25, 1.0], // Exactly represents the 25.48% Figma boundary
+    ),
+  );
+
+  static const BoxDecoration redWhiteGradient = BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(16)),
+    gradient: LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+      colors: [
+        Color(0xFFE6E6E6), // Blended bottom color (#FFFFFF + 20% dark overlay)
+        Color(0xFFA92626), // Blended top color (#D32F2F + 20% dark overlay)
+      ],
+      stops: [0.25, 1.0],
+    ),
+  );
+
+  // Newly added custom style colors
+  static const Color cardOrangeBackground = Color(0x1FFF7905); // #FF79051F (12% opacity brand orange)
+  static const Color cardOrangeBorder = Color(0xFFFF7905);     // #FF7905 (solid brand orange)
+  static const Color successGreen = Color(0xFF00B55B);         // #00B55B (confirmed green)
+
+  static const Gradient liveCarGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      Color(0xFFE6E6E6),
+      Color(0xFFCC6104),
+    ],
+    stops: [0.25, 1.0],
+  );
 }
+
