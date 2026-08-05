@@ -80,7 +80,9 @@ class BookServiceScreen extends StatelessWidget {
         ),
       ),
       body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 
 /// Grid services section with service cards (Book Service, Car History, AI Advisor, Emergency)
 class GridServicesSection extends StatelessWidget {
@@ -40,45 +41,50 @@ class GridServicesSection extends StatelessWidget {
       children: services.map((ser) {
         final bool isEmergency = ser['isEmergency'] as bool;
         return Expanded(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4.0),
-            padding: const EdgeInsets.symmetric(
-              vertical: 12.0,
-              horizontal: 4.0,
-            ),
-            decoration: isEmergency
-                ? AppColors.redWhiteGradient
-                : AppColors.orangeWhiteGradient,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  ser['icon'] as String,
-                  height: 24,
-                  width: 24,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      isEmergency ? Icons.warning_amber_rounded : Icons.build,
-                      color: isEmergency ? Colors.red[900] : AppColors.textDark,
-                      size: 24,
-                    );
-                  },
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  ser['title'] as String,
-                  style: TextStyle(
-                    color: isEmergency ? Colors.red[900] : AppColors.textDark,
-                    fontSize: isSmallScreen ? 9 : 10,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto',
+          child: GestureDetector(
+            onTap: () {
+              HapticHelper.lightImpact();
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+              padding: const EdgeInsets.symmetric(
+                vertical: 12.0,
+                horizontal: 4.0,
+              ),
+              decoration: isEmergency
+                  ? AppColors.redWhiteGradient
+                  : AppColors.orangeWhiteGradient,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    ser['icon'] as String,
+                    height: 24,
+                    width: 24,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        isEmergency ? Icons.warning_amber_rounded : Icons.build,
+                        color: isEmergency ? Colors.red[900] : AppColors.textDark,
+                        size: 24,
+                      );
+                    },
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Text(
+                    ser['title'] as String,
+                    style: TextStyle(
+                      color: isEmergency ? Colors.red[900] : AppColors.textDark,
+                      fontSize: isSmallScreen ? 9 : 10,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto',
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
           ),
         );

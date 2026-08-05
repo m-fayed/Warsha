@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 import 'package:warsha_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:warsha_app/features/home/presentation/bloc/home_event.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/pages/workshops_screen.dart';
@@ -59,82 +60,90 @@ class _HomePageState extends State<HomePage> {
           : _currentIndex == 4
           ? const ProfileScreen()
           : SafeArea(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 12.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const WelcomeHeaderWidget(),
-                      const SizedBox(height: 24),
-                      const LiveCarStatusCard(),
-                      const SizedBox(height: 20),
-                      CustomSearchBar(
-                        onSubmitted: (query) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  WorkshopsScreen(initialSearchQuery: query),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 24),
-                      QuickActionsSection(
-                        onViewAll: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const WorkshopsScreen(
-                                initialFilter: WorkshopFilter.nearMe,
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics(),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 12.0,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const WelcomeHeaderWidget(),
+                              const SizedBox(height: 24),
+                              const LiveCarStatusCard(),
+                              const SizedBox(height: 20),
+                              CustomSearchBar(
+                                onSubmitted: (query) {
+                                  HapticHelper.lightImpact();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          WorkshopsScreen(initialSearchQuery: query),
+                                    ),
+                                  );
+                                },
                               ),
-                            ),
-                          );
-                        },
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      const SizedBox(height: 24),
-                      RecommendedSection(
-                        screenWidth: screenWidth,
-                        isBmwStationFavorite: _isBmwStationFavorite,
-                        isBmwClubFavorite: _isBmwClubFavorite,
-                        onBmwStationFavoriteTap: () {
-                          setState(() {
-                            _isBmwStationFavorite = !_isBmwStationFavorite;
-                          });
-                        },
-                        onBmwClubFavoriteTap: () {
-                          setState(() {
-                            _isBmwClubFavorite = !_isBmwClubFavorite;
-                          });
-                        },
-                        onViewAll: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const WorkshopsScreen(
-                                initialFilter: WorkshopFilter.topRated,
+                              const SizedBox(height: 24),
+                              QuickActionsSection(
+                                onViewAll: () {
+                                  HapticHelper.lightImpact();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const WorkshopsScreen(
+                                        initialFilter: WorkshopFilter.nearMe,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                isSmallScreen: isSmallScreen,
                               ),
-                            ),
-                          );
-                        },
+                              const SizedBox(height: 24),
+                              RecommendedSection(
+                                screenWidth: screenWidth,
+                                isBmwStationFavorite: _isBmwStationFavorite,
+                                isBmwClubFavorite: _isBmwClubFavorite,
+                                onBmwStationFavoriteTap: () {
+                                  HapticHelper.lightImpact();
+                                  setState(() {
+                                    _isBmwStationFavorite = !_isBmwStationFavorite;
+                                  });
+                                },
+                                onBmwClubFavoriteTap: () {
+                                  HapticHelper.lightImpact();
+                                  setState(() {
+                                    _isBmwClubFavorite = !_isBmwClubFavorite;
+                                  });
+                                },
+                                onViewAll: () {
+                                  HapticHelper.lightImpact();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const WorkshopsScreen(
+                                        initialFilter: WorkshopFilter.topRated,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                              const SizedBox(height: 24),
+                              GridServicesSection(isSmallScreen: isSmallScreen),
+                              const SizedBox(height: 24),
+                            ],
+                          ),
+                        ),
                       ),
-                      const SizedBox(height: 24),
-                      GridServicesSection(isSmallScreen: isSmallScreen),
-                      const SizedBox(height: 24),
-                    ],
-                  ),
-                ),
-              ),
             ),
       bottomNavigationBar: MainBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {
+          HapticHelper.lightImpact();
           setState(() {
             _currentIndex = index;
           });

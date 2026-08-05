@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 
 class ServiceItemCard extends StatelessWidget {
   final String serviceName;
@@ -17,7 +18,10 @@ class ServiceItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        HapticHelper.lightImpact();
+        onTap();
+      },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(

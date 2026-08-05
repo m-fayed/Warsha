@@ -51,16 +51,19 @@ class HistoryTopCarCard extends StatelessWidget {
                 flex: 4,
                 child: AspectRatio(
                   aspectRatio: 1.3,
-                  child: Image.asset(
-                    imagePath,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.directions_car,
-                        size: 40,
-                        color: Color(0xFFFF7905),
-                      );
-                    },
+                  child: Hero(
+                    tag: 'history_car_image',
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Icon(
+                          Icons.directions_car,
+                          size: 40,
+                          color: Color(0xFFFF7905),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

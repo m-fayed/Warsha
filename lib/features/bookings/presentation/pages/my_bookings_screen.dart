@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 import 'package:warsha_app/features/profile/presentation/widgets/notification_bell_with_badge.dart';
 import '../widgets/active_bookings_tab_view.dart';
 
@@ -87,7 +88,10 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
   Widget _buildTabCapsule(String label, int index) {
     final bool isSelected = _activeTab == index;
     return GestureDetector(
-      onTap: () => setState(() => _activeTab = index),
+      onTap: () {
+        HapticHelper.lightImpact();
+        setState(() => _activeTab = index);
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(

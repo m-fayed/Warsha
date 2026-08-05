@@ -115,7 +115,9 @@ class _WorkshopsScreenState extends State<WorkshopsScreen> {
                               ),
                             )
                           : ListView.builder(
-                              physics: const BouncingScrollPhysics(),
+                              physics: const BouncingScrollPhysics(
+                                parent: AlwaysScrollableScrollPhysics(),
+                              ),
                               itemCount: filteredWorkshops.length,
                               itemBuilder: (context, index) {
                                 final workshop = filteredWorkshops[index];

@@ -36,18 +36,21 @@ class LiveCarStatusCard extends StatelessWidget {
                 aspectRatio: 1.2,
                 child: Container(
                   color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/car.png',
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Center(
-                        child: Icon(
-                          Icons.directions_car,
-                          color: AppColors.textGrey,
-                          size: 40,
-                        ),
-                      );
-                    },
+                  child: Hero(
+                    tag: 'home_live_car_image',
+                    child: Image.asset(
+                      'assets/images/car.png',
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(
+                            Icons.directions_car,
+                            color: AppColors.textGrey,
+                            size: 40,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

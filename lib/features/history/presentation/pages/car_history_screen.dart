@@ -65,7 +65,9 @@ class CarHistoryScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: const HistoryCustomAppBar(),
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
           child: Column(

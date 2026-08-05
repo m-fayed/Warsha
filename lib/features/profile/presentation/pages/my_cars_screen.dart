@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 import 'package:warsha_app/features/auth/presentation/screens/add_car_and_plates_screen.dart';
 import 'package:warsha_app/features/profile/presentation/widgets/car_data.dart';
 import 'package:warsha_app/features/profile/presentation/widgets/dark_car_info_card.dart';
@@ -50,11 +51,16 @@ class _MyCarsScreenState extends State<MyCarsScreen> {
             color: Colors.grey,
             size: 18,
           ),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            HapticHelper.lightImpact();
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
           child: Column(
@@ -66,6 +72,7 @@ class _MyCarsScreenState extends State<MyCarsScreen> {
                   specs: _cars[0].specs,
                   license: _cars[0].license,
                   imagePath: _cars[0].imagePath,
+                  heroTag: 'my_car_card_0',
                 ),
               const SizedBox(height: 16),
               const DarkLiveCarStatusCard(
@@ -81,6 +88,7 @@ class _MyCarsScreenState extends State<MyCarsScreen> {
                   specs: _cars[i].specs,
                   license: _cars[i].license,
                   imagePath: _cars[i].imagePath,
+                  heroTag: 'my_car_card_$i',
                 ),
                 const SizedBox(height: 16),
               ],
@@ -89,6 +97,7 @@ class _MyCarsScreenState extends State<MyCarsScreen> {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () async {
+                    HapticHelper.lightImpact();
                     final result = await Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 import 'live_progress_card.dart';
 import 'booking_status_card.dart';
 
@@ -14,15 +15,26 @@ class ActiveBookingsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: const BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       children: [
         // Live Progress Card
         LiveProgressCard(
           carInfo: 'BMW 320i • 2019',
           currentStep: 1,
-          onApproveQuote: () => onActionTriggered('Quote Approved!'),
-          onChatTap: () => onActionTriggered('Opening Chat...'),
-          onCallTap: () => onActionTriggered('Calling Workshop...'),
+          onApproveQuote: () {
+            HapticHelper.lightImpact();
+            onActionTriggered('Quote Approved!');
+          },
+          onChatTap: () {
+            HapticHelper.lightImpact();
+            onActionTriggered('Opening Chat...');
+          },
+          onCallTap: () {
+            HapticHelper.lightImpact();
+            onActionTriggered('Calling Workshop...');
+          },
         ),
         const SizedBox(height: 16),
 
@@ -96,7 +108,10 @@ class ActiveBookingsTabView extends StatelessWidget {
     VoidCallback onTap,
   ) {
     return OutlinedButton(
-      onPressed: onTap,
+      onPressed: () {
+        HapticHelper.lightImpact();
+        onTap();
+      },
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: borderColor, width: 1.2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

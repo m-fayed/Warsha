@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
 
 class HistoryServiceCard extends StatelessWidget {
   final String title;
@@ -16,7 +17,11 @@ class HistoryServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        HapticHelper.lightImpact();
+      },
+      child: Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0x1FFF7905), // Figma Hex #FF79051F
@@ -94,6 +99,7 @@ class HistoryServiceCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
