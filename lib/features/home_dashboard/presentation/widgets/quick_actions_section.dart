@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
 import 'package:warsha_app/core/utils/haptic_helper.dart';
+import 'package:warsha_app/features/home_dashboard/presentation/pages/book_service_screen.dart';
 
-/// Quick actions row displaying standard maintenance actions
+/// Quick actions row displaying standard maintenance actions (Oil change, Tire change, Battery, AC)
 class QuickActionsSection extends StatelessWidget {
   final VoidCallback onViewAll;
   final bool isSmallScreen;
+  final Function(String serviceName)? onQuickActionTap;
 
   const QuickActionsSection({
     super.key,
     required this.onViewAll,
     required this.isSmallScreen,
+    this.onQuickActionTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final actions = [
-      {'title': 'Oil change', 'icon': 'assets/icons/oilChange.png'},
-      {'title': 'Tire change', 'icon': 'assets/icons/tierChange.png'},
-      {'title': 'Battery', 'icon': 'assets/icons/battary.png'},
-      {'title': 'AC', 'icon': 'assets/icons/ac.png'},
+      {'title': 'Oil change', 'icon': 'assets/icons/oil.png'},
+      {'title': 'Tire change', 'icon': 'assets/icons/tire.png'},
+      {'title': 'Battery', 'icon': 'assets/icons/battery.png'},
+      {'title': 'AC', 'icon': 'assets/icons/Ac.png'},
     ];
 
     return Column(
@@ -57,10 +60,25 @@ class QuickActionsSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: actions.map((act) {
+            final serviceTitle = act['title']!;
+
             return Expanded(
               child: GestureDetector(
                 onTap: () {
                   HapticHelper.lightImpact();
+                  if (onQuickActionTap != null) {
+                    onQuickActionTap!(serviceTitle);
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookServiceScreen(
+                          workshopName: 'Bmw Station',
+                          initialServiceName: serviceTitle,
+                        ),
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -88,7 +106,7 @@ class QuickActionsSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        act['title']!,
+                        serviceTitle,
                         style: TextStyle(
                           color: AppColors.textDark,
                           fontSize: isSmallScreen ? 9 : 11,

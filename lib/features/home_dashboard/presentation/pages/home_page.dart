@@ -106,20 +106,6 @@ class _HomePageState extends State<HomePage> {
                               const SizedBox(height: 24),
                               RecommendedSection(
                                 screenWidth: screenWidth,
-                                isBmwStationFavorite: _isBmwStationFavorite,
-                                isBmwClubFavorite: _isBmwClubFavorite,
-                                onBmwStationFavoriteTap: () {
-                                  HapticHelper.lightImpact();
-                                  setState(() {
-                                    _isBmwStationFavorite = !_isBmwStationFavorite;
-                                  });
-                                },
-                                onBmwClubFavoriteTap: () {
-                                  HapticHelper.lightImpact();
-                                  setState(() {
-                                    _isBmwClubFavorite = !_isBmwClubFavorite;
-                                  });
-                                },
                                 onViewAll: () {
                                   HapticHelper.lightImpact();
                                   Navigator.push(
@@ -133,7 +119,19 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                               const SizedBox(height: 24),
-                              GridServicesSection(isSmallScreen: isSmallScreen),
+                               GridServicesSection(
+                                 isSmallScreen: isSmallScreen,
+                                 onCarHistoryTap: () {
+                                   setState(() {
+                                     _currentIndex = 1;
+                                   });
+                                 },
+                                 onBookServiceTap: () {
+                                   setState(() {
+                                     _currentIndex = 2;
+                                   });
+                                 },
+                               ),
                               const SizedBox(height: 24),
                             ],
                           ),

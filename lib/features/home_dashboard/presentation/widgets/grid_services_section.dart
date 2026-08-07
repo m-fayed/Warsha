@@ -5,10 +5,18 @@ import 'package:warsha_app/core/utils/haptic_helper.dart';
 /// Grid services section with service cards (Book Service, Car History, AI Advisor, Emergency)
 class GridServicesSection extends StatelessWidget {
   final bool isSmallScreen;
+  final VoidCallback? onBookServiceTap;
+  final VoidCallback? onCarHistoryTap;
+  final VoidCallback? onAiAdvisorTap;
+  final VoidCallback? onEmergencyTap;
 
   const GridServicesSection({
     super.key,
     required this.isSmallScreen,
+    this.onBookServiceTap,
+    this.onCarHistoryTap,
+    this.onAiAdvisorTap,
+    this.onEmergencyTap,
   });
 
   @override
@@ -18,21 +26,25 @@ class GridServicesSection extends StatelessWidget {
         'title': 'Book Service',
         'icon': 'assets/icons/bookService.png',
         'isEmergency': false,
+        'onTap': onBookServiceTap,
       },
       {
         'title': 'Car History',
         'icon': 'assets/icons/carHistory.png',
         'isEmergency': false,
+        'onTap': onCarHistoryTap,
       },
       {
         'title': 'Ai Advisor',
         'icon': 'assets/icons/AiAdviser.png',
         'isEmergency': false,
+        'onTap': onAiAdvisorTap,
       },
       {
         'title': 'Emergency',
         'icon': 'assets/icons/emergency.png',
         'isEmergency': true,
+        'onTap': onEmergencyTap,
       },
     ];
 
@@ -40,10 +52,13 @@ class GridServicesSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: services.map((ser) {
         final bool isEmergency = ser['isEmergency'] as bool;
+        final VoidCallback? callback = ser['onTap'] as VoidCallback?;
+
         return Expanded(
           child: GestureDetector(
             onTap: () {
               HapticHelper.lightImpact();
+              callback?.call();
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 4.0),

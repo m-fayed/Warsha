@@ -7,11 +7,13 @@ import 'package:warsha_app/features/home/domain/usecases/get_featured_workshops_
 import 'package:warsha_app/features/home/domain/usecases/get_upcoming_bookings_usecase.dart';
 import 'package:warsha_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:warsha_app/features/auth/presentation/cubit/language_cubit.dart';
+import 'package:warsha_app/features/home_dashboard/presentation/cubit/saved_workshops_cubit.dart';
 import '../network/dio_client.dart';
 import '../constants/app_constants.dart';
 
 /// Service Locator configuration for dependency injection
 final getIt = GetIt.instance;
+final sl = getIt;
 
 /// Initialize all dependencies
 Future<void> setupServiceLocator() async {
@@ -69,5 +71,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<LanguageCubit>(
     () => LanguageCubit(getIt<SharedPreferences>()),
   );
-}
 
+  // Saved Workshops Cubit
+  getIt.registerFactory<SavedWorkshopsCubit>(
+    () => SavedWorkshopsCubit(),
+  );
+}

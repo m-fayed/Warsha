@@ -47,10 +47,7 @@ class ReminderTimelineItem extends StatelessWidget {
               ),
               if (showLine)
                 Expanded(
-                  child: Container(
-                    width: 2,
-                    color: const Color(0xFFFF7905),
-                  ),
+                  child: Container(width: 2, color: const Color(0xFFFF7905)),
                 ),
               if (showLine)
                 Container(
@@ -73,7 +70,9 @@ class ReminderTimelineItem extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFF8F2), // Light orange tinted background
+                  color: const Color(
+                    0xFFFFF8F2,
+                  ), // Light orange tinted background
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     color: const Color(0xFFFF7905), // Primary orange border

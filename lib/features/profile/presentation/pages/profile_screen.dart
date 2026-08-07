@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
+import 'package:warsha_app/features/profile/presentation/pages/saved_workshops_screen.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
 import 'package:warsha_app/features/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:warsha_app/features/profile/presentation/pages/help_support_screen.dart';
@@ -91,7 +93,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ProfileMenuCard(
                 icon: Icons.favorite_border,
                 title: 'Saved Workshops',
-                onTap: () {},
+                onTap: () {
+                  HapticHelper.lightImpact();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SavedWorkshopsScreen(),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 24),
 

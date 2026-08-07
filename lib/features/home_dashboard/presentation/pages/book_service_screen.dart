@@ -18,14 +18,24 @@ class ServiceData {
 
 class BookServiceScreen extends StatelessWidget {
   final String workshopName;
+  final String? initialServiceName;
 
-  const BookServiceScreen({super.key, required this.workshopName});
+  const BookServiceScreen({
+    super.key,
+    this.workshopName = 'Bmw Station',
+    this.initialServiceName,
+  });
 
   static const List<ServiceData> _services = [
     ServiceData(
       serviceName: 'Oil change',
       price: 1800,
       icon: Icons.oil_barrel_outlined,
+    ),
+    ServiceData(
+      serviceName: 'Tire change',
+      price: 600,
+      icon: Icons.tire_repair_outlined,
     ),
     ServiceData(
       serviceName: 'Full service',
@@ -53,6 +63,15 @@ class BookServiceScreen extends StatelessWidget {
       icon: Icons.car_repair_outlined,
     ),
   ];
+
+  bool _isServiceSelected(String serviceName) {
+    if (initialServiceName == null || initialServiceName!.isEmpty) {
+      return false;
+    }
+    final s = serviceName.toLowerCase();
+    final q = initialServiceName!.toLowerCase();
+    return s.contains(q) || q.contains(s);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +125,7 @@ class BookServiceScreen extends StatelessWidget {
                       serviceName: service.serviceName,
                       price: service.price,
                       icon: service.icon,
+                      isSelected: _isServiceSelected(service.serviceName),
                       onTap: () {
                         Navigator.push(
                           context,

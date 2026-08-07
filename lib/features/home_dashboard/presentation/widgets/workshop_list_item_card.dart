@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warsha_app/core/theme/app_colors.dart';
+import 'package:warsha_app/core/utils/haptic_helper.dart';
+import 'package:warsha_app/features/home_dashboard/presentation/cubit/saved_workshops_cubit.dart';
+import 'package:warsha_app/features/home_dashboard/presentation/cubit/workshops_filter_cubit.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/pages/workshop_details_screen.dart';
 
-/// Reusable Workshop List Item Card matching design specifications
+/// Reusable Workshop List Item Card matching design specifications with favorite toggle
 class WorkshopListItemCard extends StatelessWidget {
   final String name;
   final String logoPath;
@@ -25,6 +29,7 @@ class WorkshopListItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        HapticHelper.lightImpact();
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -113,7 +118,7 @@ class WorkshopListItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
-                  // Horizontal row of 5 Golden Star Icons followed by the rating numeric string
+                  // Horizontal row of 5 Golden Star Icons followed by rating string
                   Row(
                     children: [
                       ...List.generate(5, (index) {
@@ -147,6 +152,35 @@ class WorkshopListItemCard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+
+            // Favorite Heart Icon Button
+            BlocBuilder<SavedWorkshopsCubit, SavedWorkshopsState>(
+              builder: (context, state) {
+                final isFav = state.isFavorite(name);
+                return GestureDetector(
+                  onTap: () {
+                    HapticHelper.lightImpact();
+                    final model = WorkshopListItemModel(
+                      name: name,
+                      logoPath: logoPath,
+                      specialty: specialty,
+                      rating: rating,
+                      logoBgColor: logoBgColor,
+                      distance: distance,
+                    );
+                    context.read<SavedWorkshopsCubit>().toggleFavorite(model);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 4.0),
+                    child: Icon(
+                      isFav ? Icons.favorite : Icons.favorite_border,
+                      color: isFav ? const Color(0xFFE53935) : Colors.grey,
+                      size: 24,
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),

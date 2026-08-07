@@ -7,6 +7,8 @@ import 'package:warsha_app/features/auth/presentation/cubit/language_cubit.dart'
 import 'package:warsha_app/features/auth/presentation/screens/welcome_screen.dart';
 import 'package:warsha_app/features/home/presentation/bloc/home_bloc.dart';
 
+import 'package:warsha_app/features/home_dashboard/presentation/cubit/saved_workshops_cubit.dart';
+
 void main() async {
   // Ensure Flutter binding is initialized for async setup
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,8 +26,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         // Register Blocs / Cubits
-        BlocProvider(create: (context) => getIt<HomeBloc>()),
-        BlocProvider(create: (context) => getIt<LanguageCubit>()),
+        BlocProvider(create: (context) => sl<HomeBloc>()),
+        BlocProvider(create: (context) => sl<LanguageCubit>()),
+        BlocProvider(create: (context) => sl<SavedWorkshopsCubit>()),
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
