@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warsha_app/features/auth/presentation/screens/language_screen.dart';
-import 'package:warsha_app/features/auth/presentation/screens/phone_otp_screen.dart';
+import 'package:warsha_app/features/auth/presentation/screens/login_screen.dart';
 import '../widgets/welcome_background.dart';
 import '../widgets/welcome_composite_header.dart';
 import '../widgets/welcome_info_and_actions.dart';
@@ -42,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
                     onLogin: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const PhoneOtpScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },

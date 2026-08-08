@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:warsha_app/features/auth/presentation/cubit/language_cubit.dart';
-import 'package:warsha_app/features/auth/presentation/screens/phone_otp_screen.dart';
+import 'package:warsha_app/features/auth/presentation/screens/register_screen.dart';
 import '../widgets/language_flags.dart';
 import '../widgets/language_card.dart';
 
@@ -95,7 +95,7 @@ class LanguageScreen extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const PhoneOtpScreen()),
+                            MaterialPageRoute(builder: (context) => const RegisterScreen()),
                           );
                         },
                         child: Container(

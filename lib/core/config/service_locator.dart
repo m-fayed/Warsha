@@ -6,6 +6,7 @@ import 'package:warsha_app/features/home/domain/repositories/home_repository.dar
 import 'package:warsha_app/features/home/domain/usecases/get_featured_workshops_usecase.dart';
 import 'package:warsha_app/features/home/domain/usecases/get_upcoming_bookings_usecase.dart';
 import 'package:warsha_app/features/home/presentation/bloc/home_bloc.dart';
+import 'package:warsha_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:warsha_app/features/auth/presentation/cubit/language_cubit.dart';
 import 'package:warsha_app/features/home_dashboard/presentation/cubit/saved_workshops_cubit.dart';
 import '../network/dio_client.dart';
@@ -67,9 +68,13 @@ Future<void> setupServiceLocator() async {
     ),
   );
 
-  // Auth Feature - Cubit
+  // Auth Feature - Cubits
   getIt.registerLazySingleton<LanguageCubit>(
     () => LanguageCubit(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerFactory<AuthCubit>(
+    () => AuthCubit(),
   );
 
   // Saved Workshops Cubit
